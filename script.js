@@ -45,3 +45,10 @@ document
   .addEventListener("click", function () {
     message.remove();
   });
+
+// styling of cookie background, height, width
+message.style.backgroundColor = "#37383d";
+message.style.width = "120%";
+
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height) + 40 + "px";
