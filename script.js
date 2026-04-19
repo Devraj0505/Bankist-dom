@@ -52,3 +52,11 @@ message.style.width = "120%";
 
 message.style.height =
   Number.parseFloat(getComputedStyle(message).height) + 40 + "px";
+
+// learn more button smooth scrolling to the section 1
+const btnScrollTo = document.querySelector(".btn--scroll-to");
+const section1 = document.querySelector("#section--1");
+
+btnScrollTo.addEventListener("click", function () {
+  section1.scrollIntoView({ behavior: "smooth" });
+});
