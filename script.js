@@ -60,3 +60,27 @@ const section1 = document.querySelector("#section--1");
 btnScrollTo.addEventListener("click", function () {
   section1.scrollIntoView({ behavior: "smooth" });
 });
+
+// const nodeList132 = document.querySelectorAll(".nav__link");
+// console.log(nodeList132);
+
+// page navigation using links
+
+// document.querySelectorAll(".nav__link").forEach(function (el) {
+//   el.addEventListener("click", function (e) {
+//     e.preventDefault();
+//     const id = this.getAttribute("href");
+//     document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+//   });
+// });
+
+// better way
+document.querySelector(".nav__links").addEventListener("click", function (e) {
+  e.preventDefault();
+  // matching the clicked then only scroll
+  if (e.target.classList.contains("nav__link")) {
+    const id = e.target.getAttribute("href");
+    console.log(id);
+    document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+  }
+});
