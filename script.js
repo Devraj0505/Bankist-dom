@@ -138,3 +138,16 @@ nav.addEventListener("mouseout", function (e) {
 // better eay using bind methids
 nav.addEventListener("mouseover", handleHover.bind(0.5));
 nav.addEventListener("mouseout", handleHover.bind(1));
+
+// sticky navigation using without intersection of observation api
+const initialCoords = section1.getBoundingClientRect();
+console.log(initialCoords);
+
+window.addEventListener("scroll", function () {
+  console.log(window.scrollY); // gettin manual coordinates of Y
+  if (window.scrollY > initialCoords.top) {
+    nav.classList.add("sticky");
+  } else {
+    nav.classList.remove("sticky");
+  }
+});
