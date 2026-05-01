@@ -140,7 +140,7 @@ nav.addEventListener("mouseover", handleHover.bind(0.5));
 nav.addEventListener("mouseout", handleHover.bind(1));
 
 // sticky navigation using without intersection of observation api
-const initialCoords = section1.getBoundingClientRect();
+/* const initialCoords = section1.getBoundingClientRect();
 console.log(initialCoords);
 
 window.addEventListener("scroll", function () {
@@ -150,4 +150,22 @@ window.addEventListener("scroll", function () {
   } else {
     nav.classList.remove("sticky");
   }
+}); */
+
+// sticky navigation using intersection observer api
+const header1 = document.querySelector("header");
+
+const headerCallback = function (entries) {
+  const [entry] = entries;
+  console.log(entry);
+  if (!entry.isIntersecting) nav.classList.add("sticky");
+  else nav.classList.remove("sticky");
+};
+
+const headerObserver = new IntersectionObserver(headerCallback, {
+  root: null,
+  threshold: 0,
+  rootMargin: "-90px",
 });
+
+headerObserver.observe(header1);
