@@ -154,6 +154,7 @@ window.addEventListener("scroll", function () {
 
 // sticky navigation using intersection observer api
 const header1 = document.querySelector("header");
+const navHeight = nav.getBoundingClientRect().height;
 
 const headerCallback = function (entries) {
   const [entry] = entries;
@@ -165,7 +166,7 @@ const headerCallback = function (entries) {
 const headerObserver = new IntersectionObserver(headerCallback, {
   root: null,
   threshold: 0,
-  rootMargin: "-90px",
+  rootMargin: `-${navHeight}px`,
 });
 
 headerObserver.observe(header1);
