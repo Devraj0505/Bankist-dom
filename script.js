@@ -158,7 +158,7 @@ const navHeight = nav.getBoundingClientRect().height;
 
 const headerCallback = function (entries) {
   const [entry] = entries;
-  console.log(entry);
+  // console.log(entry);
   if (!entry.isIntersecting) nav.classList.add("sticky");
   else nav.classList.remove("sticky");
 };
@@ -170,3 +170,25 @@ const headerObserver = new IntersectionObserver(headerCallback, {
 });
 
 headerObserver.observe(header1);
+
+// reveal sections on scroll
+const allSection = document.querySelectorAll(".section");
+
+const revealSection = (entries, observer) => {
+  const [entry] = entries;
+  // console.log(entry);
+  if (!entry.isIntersecting) return; // if the section is not visible then stop the function
+
+  entry.target.classList.remove("section--hidden");
+  observer.unobserve(entry.target);
+};
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.15,
+});
+
+allSection.forEach((section) => {
+  section.classList.add("section--hidden");
+  sectionObserver.observe(section);
+});
